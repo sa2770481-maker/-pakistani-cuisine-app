@@ -1,0 +1,209 @@
+/* 🏷️ FEANE-INSPIRED DARK CULINARY SYSTEM */
+@import url('https://googleapis.com');
+
+:root {
+  --bg-dark: #222831;         /* The exact Feane rich slate/black backdrop */
+  --text-white: #ffffff;      /* High-contrast crisp white titles */
+  --text-gray: #9aa0a6;       /* Clean reading text gray */
+  --feane-yellow: #ffbe33;    /* The vibrant signature honey-yellow accent */
+  --font-cursive: 'Playball', cursive;
+  --font-clean: 'Poppins', sans-serif;
+}
+
+/* Master Canvas Reset */
+/* Master Canvas Reset & Legible Background Setup */
+body {
+  /* Combined dark overlay gradient and background photo */
+  background-image: 
+    linear-gradient(rgba(34, 40, 49, 0.50), rgba(34, 40, 49, 0.50)), 
+    url('food.avif'); 
+  
+  /* Forces the background image to fill all empty sides completely */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Keeps background beautifully stable when scrolling */
+
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: var(--font-clean);
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Header & Sleek Navigation Layout */
+header {
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-family: var(--font-cursive);
+  font-size: 2.2rem;
+  color: var(--text-white);
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+  color: var(--feane-yellow);
+}
+
+/* Specialized Yellow Pill Button inside the Navbar */
+.nav-btn {
+  background: var(--feane-yellow);
+  color: var(--text-white) !important;
+  border-radius: 30px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(255, 190, 51, 0.2);
+}
+.nav-btn:hover {
+  background: #e6a92c;
+}
+
+/* Main Display Container */
+main {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 60px;
+  text-align: left; /* Left-aligned layouts exactly like your sample image */
+}
+
+/* Elegant Feane Cursive Typography */
+.hero-title {
+  font-family: var(--font-cursive);
+  font-size: 4.8rem;
+  color: var(--text-white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+main p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #dfdfdf;
+  max-width: 550px;
+  margin-bottom: 35px;
+}
+
+/* Signature Honey-Yellow Action Buttons */
+.btn-action {
+  background: var(--feane-yellow);
+  color: var(--text-white);
+  border: none;
+  padding: 14px 45px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 35px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.btn-action:hover {
+  background: #e6a92c;
+}
+
+/* List Formatting (dishes.html) */
+ul {
+  padding: 0;
+  max-width: 800px;
+}
+li {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.05rem;
+  list-style: none;
+}
+li b {
+  font-family: var(--font-cursive);
+  font-size: 2rem;
+  color: var(--feane-yellow);
+  display: block;
+}
+
+/* Photo Exhibition Structure (gallery.html) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.gallery img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 5px solid #2f3640;
+}
+
+/* Form Styling Architecture (contact.html) */
+form {
+  max-width: 500px;
+}
+label {
+  font-size: 0.9rem;
+  color: var(--feane-yellow);
+  font-weight: 500;
+}
+input, textarea {
+  width: 100%;
+  background: #d3ddea;
+  border: 1px solid #4f5b66;
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  color: white;
+  box-sizing: border-box;
+  outline: none;
+}
+input:focus, textarea:focus {
+  border-color: var(--feane-yellow);
+}
+
+/* 🧑‍🍳 AGENT PAGE CHAT PANEL STYLING (chef.html) */
+.chef-layout {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.ai-messages {
+  height: 380px;
+  overflow-y: auto;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bot-msg { font-size: 1.1rem; line-height: 1.6; color: var(--text-white); margin-bottom: 20px; }
+.user-msg { font-size: 1.1rem; color: var(--feane-yellow); text-align: right; margin-bottom: 20px; font-weight: 500; }
+.ai-input-wrapper { display: flex; gap: 15px; align-items: center; }
+.ai-input-wrapper input { margin-bottom: 0; margin-top: 0; flex: 1; }
+
+footer {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  border-top: 1px solid #2f3640;
+  margin-top: 100px;
+}

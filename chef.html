@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chef | Exploring Food of Pakistan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Exploring Food of Pakistan</h1>
+    <nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="dishes.html">Dishes</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+  <a href="chef.html" class="nav-btn">AI Chef</a>
+</nav>
+
+  </header>
+  
+  <main>
+    <div class="chef-layout">
+      <div class="ai-messages" id="chat-box">
+        <div class="bot-msg">Assalamualaikum. I am your personal AI Culinary Assistant. Ask me anything about traditional recipes, ingredients, or food historical roots.</div>
+      </div>
+      
+      <div class="ai-input-wrapper">
+        <input type="text" id="user-input" placeholder="Ask a culinary question...">
+        <button class="btn-action" style="width: auto; padding: 10px 25px;" onclick="sendMessage()">Ask</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Exploring Food of Pakistan | All rights reserved.</p>
+  </footer>
+
+  <script>
+    async function sendMessage() {
+      const inputEl = document.getElementById('user-input');
+      const boxEl = document.getElementById('chat-box');
+      if(!inputEl.value.trim()) return;
+
+      boxEl.innerHTML += `<div class="user-msg">${inputEl.value}</div>`;
+      const userText = inputEl.value;
+      inputEl.value = '';
+      boxEl.scrollTop = boxEl.scrollHeight;
+      boxEl.innerHTML += `<div class="bot-msg" id="loading" style="font-style: italic; opacity:0.6;">Preparing the flavor notes...</div>`;
+
+      try {
+        const response = await fetch('http://localhost:5000/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: userText })
+        });
+        const data = await response.json();
+        document.getElementById('loading').remove();
+        boxEl.innerHTML += `<div class="bot-msg">${data.reply}</div>`;
+      } catch (err) {
+        document.getElementById('loading').remove();
+        boxEl.innerHTML += `<div class="bot-msg" style="color:red;">Error: Make sure your background server is active!</div>`;
+      }
+      boxEl.scrollTop = boxEl.scrollHeight;
+    }
+  </script>
+</body>
+</html>
